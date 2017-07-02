@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.bukkit.craftbukkit.v1_9_R2.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_11_R1.entity.CraftPlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.cubeville.commons.commands.Command;
@@ -13,7 +13,7 @@ import org.cubeville.commons.commands.CommandResponse;
 import org.cubeville.cvtools.commands.CommandMap;
 import org.cubeville.cvtools.commands.CommandMapManager;
 
-import net.minecraft.server.v1_9_R2.PacketPlayOutMount;
+import net.minecraft.server.v1_11_R1.PacketPlayOutMount;
 
 public class EntityRide extends Command {
 

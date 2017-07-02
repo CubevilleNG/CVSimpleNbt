@@ -3,7 +3,7 @@ package org.cubeville.cvtools.nbt;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Horse;
 
-import net.minecraft.server.v1_9_R2.EntityHorse;
+import net.minecraft.server.v1_11_R1.EntityHorse;
 
 public class NBTHorse extends NBTEntityLiving {
 
@@ -28,6 +28,6 @@ public class NBTHorse extends NBTEntityLiving {
 	
 	public void unTame() {
 		horse.attachedToPlayer = false;
-		horse.setTame(false);
+		// TODO: Failed with 1.11: horse.setTame(false);
 	}
 }

@@ -65,6 +65,7 @@ public class CVSimpleNbt extends JavaPlugin {
         commandParser.addCommand(new EntityInfo());
         commandParser.addCommand(new EntityInvulnerable());
         commandParser.addCommand(new EntityMove());
+        commandParser.addCommand(new EntityMoveHere());
         commandParser.addCommand(new EntityName());
         commandParser.addCommand(new EntityPainting());
         commandParser.addCommand(new EntityRemove());

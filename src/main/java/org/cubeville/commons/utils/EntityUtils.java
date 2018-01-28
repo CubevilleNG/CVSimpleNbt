@@ -1,9 +1,11 @@
 package org.cubeville.commons.utils;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Ageable;
@@ -34,7 +36,17 @@ public class EntityUtils {
         return entities;
 		
     }
-	
+
+    public static List<Entity> filterEntityByUUID(Collection<Entity> entityCollection, UUID uuid) {
+        List<Entity> ret = new ArrayList<>();
+        for(Entity entity: entityCollection) {
+            if(entity.getUniqueId() != uuid) {
+                ret.add(entity);
+            }
+        }
+        return ret;
+    }
+    
     public static Entity getNearestEntity(Location loc, List<Entity> entities) {
     	Entity nearestEntity = null;
     	double distance = 10000;
@@ -44,6 +56,7 @@ public class EntityUtils {
     	}
     	
     	for(Entity entity: entities) {
+            System.out.println("Near entity: " + entity.getType() + " at " + entity.getLocation());
             if (entity.getLocation().distance(loc) < distance) {
                 nearestEntity = entity;
                 distance = entity.getLocation().distance(loc);
@@ -94,7 +107,11 @@ public class EntityUtils {
                 info.add("&a" + entry.getKey() + "&r: " + entry.getValue());
             }
         }
-		
+
+        DecimalFormat df = new DecimalFormat("#.##");
+        info.add("&aX: " + df.format(e.getLocation().getX()));
+        info.add("&aY: " + df.format(e.getLocation().getY()));
+        info.add("&aZ: " + df.format(e.getLocation().getZ()));
 		
         return info;
     }

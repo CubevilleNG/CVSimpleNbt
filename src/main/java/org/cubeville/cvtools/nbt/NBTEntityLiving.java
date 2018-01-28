@@ -6,10 +6,10 @@ import java.util.Map;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 
-import net.minecraft.server.v1_11_R1.AttributeInstance;
-import net.minecraft.server.v1_11_R1.AttributeMapBase;
-import net.minecraft.server.v1_11_R1.EntityLiving;
-import net.minecraft.server.v1_11_R1.NBTTagString;
+import net.minecraft.server.v1_12_R1.AttributeInstance;
+import net.minecraft.server.v1_12_R1.AttributeMapBase;
+import net.minecraft.server.v1_12_R1.EntityLiving;
+import net.minecraft.server.v1_12_R1.NBTTagString;
 
 public class NBTEntityLiving extends NBTEntity {
 

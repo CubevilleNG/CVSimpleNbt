@@ -3,7 +3,7 @@ package org.cubeville.cvtools.nbt;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Horse;
 
-import net.minecraft.server.v1_11_R1.EntityHorse;
+import net.minecraft.server.v1_12_R1.EntityHorse;
 
 public class NBTHorse extends NBTEntityLiving {
 

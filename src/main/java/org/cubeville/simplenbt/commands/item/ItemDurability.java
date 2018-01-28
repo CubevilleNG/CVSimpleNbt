@@ -32,7 +32,11 @@ public class ItemDurability extends Command {
         if (item == null || item.getType() == Material.AIR) {
             throw new CommandExecutionException("&cMust be holding an item!");
         }
-		
+
+        if(!(parameters.containsKey("set") || flags.contains("max") || parameters.containsKey("unbreakable"))) {
+            return new CommandResponse("&aCurrent durability: " + item.getDurability());
+        }
+        
         if (parameters.containsKey("set") && !flags.contains("max")) {
             item.setDurability((short) (item.getType().getMaxDurability() - ((short) parameters.get("set"))));
         } else if (!parameters.containsKey("set") && flags.contains("max")) {
@@ -45,6 +49,7 @@ public class ItemDurability extends Command {
             meta.spigot().setUnbreakable((boolean) parameters.get("unbreakable"));
             item.setItemMeta(meta);
         }
+
         return new CommandResponse("&aItem durability successfully changed!");
 		
     }

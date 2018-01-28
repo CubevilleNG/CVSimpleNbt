@@ -18,6 +18,7 @@ public class ArmorColor extends Command {
     
     public ArmorColor() {
         super("armor color");
+        addFlag("add");
         addBaseParameter(new CommandParameterColor());
     }
     
@@ -33,9 +34,19 @@ public class ArmorColor extends Command {
         }
 
         LeatherArmorMeta meta = (LeatherArmorMeta) item.getItemMeta();
-        meta.setColor((Color) baseParameters.get(0));
+        Color newCol = (Color) baseParameters.get(0);
+        if(flags.contains("add")) {
+            meta.setColor(meta.getColor().mixColors(newCol));
+        }
+        else {
+            meta.setColor(newCol);
+        }
         item.setItemMeta(meta);
-        return new CommandResponse("&aArmor color changed to &6" + ((Color) baseParameters.get(0)).toString());
+        if(flags.contains("add")) {
+            return new CommandResponse("&aColor &6" + ((Color) baseParameters.get(0)).toString() + "&a added to armor color.");
+        }
+        else {
+            return new CommandResponse("&aArmor color changed to &6" + ((Color) baseParameters.get(0)).toString());
+        }
     }
-
 }

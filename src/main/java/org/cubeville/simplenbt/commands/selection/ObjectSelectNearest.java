@@ -44,8 +44,11 @@ public class ObjectSelectNearest extends Command {
         CommandResponse cr = new CommandResponse();
 		
         if (parameters.containsKey("entity") && !parameters.containsKey("block")) {
-            Entity entity = EntityUtils.getNearestEntity(player.getLocation(), EntityUtils.getEntitiesByType(player.getWorld().getNearbyEntities(player.getLocation(), radius, radius, radius), (EntityType) parameters.get("entity")));
-            if (entity != null && !(entity instanceof Player)) {
+            if(parameters.get("entity") == EntityType.PLAYER && (!(player.hasPermission("snbt.selection.player")))) 
+                throw new CommandExecutionException("&cNo permission to select players.");
+            List<Entity> entities = EntityUtils.filterEntityByUUID(player.getWorld().getNearbyEntities(player.getLocation(), radius, radius, radius), player.getUniqueId());
+            Entity entity = EntityUtils.getNearestEntity(player.getLocation(), EntityUtils.getEntitiesByType(entities, (EntityType) parameters.get("entity")));
+            if (entity != null) {
                 CommandMapManager.primaryMap.put(player, entity);
                 if (entity.getCustomName() != null) {
                     cr.setBaseMessage("&aEntity &6" + entity.getCustomName() + " &aselected at location " + entity.getLocation().getBlockX() + "," + entity.getLocation().getBlockY() + "," + entity.getLocation().getBlockZ());

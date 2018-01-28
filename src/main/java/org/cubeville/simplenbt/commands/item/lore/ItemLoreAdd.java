@@ -22,6 +22,7 @@ public class ItemLoreAdd extends Command {
 		addBaseParameter(new CommandParameterString());
 		addParameter("insert", true, new CommandParameterInteger());
 		addParameter("set", true, new CommandParameterInteger());
+                addFlag("noreset");
 	}
 
 	@Override
@@ -32,7 +33,8 @@ public class ItemLoreAdd extends Command {
 		}
 		
 		NBTItem item = new NBTItem(player.getInventory().getItemInMainHand());
-		String line = ColorUtils.addColor("&r" + (String) baseParameters.get(0));
+                boolean noreset = flags.size() == 1;
+		String line = ColorUtils.addColor((noreset ? "" : "&r") + (String) baseParameters.get(0));
 		CommandResponse cr = new CommandResponse();
 		
 		if (!parameters.containsKey("insert") && !parameters.containsKey("set")) {

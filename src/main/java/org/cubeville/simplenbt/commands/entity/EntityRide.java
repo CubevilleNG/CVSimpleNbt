@@ -4,16 +4,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.bukkit.craftbukkit.v1_11_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
+import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.cubeville.commons.commands.Command;
 import org.cubeville.commons.commands.CommandExecutionException;
 import org.cubeville.commons.commands.CommandResponse;
+import org.cubeville.commons.utils.EntityUtils;
 import org.cubeville.cvtools.commands.CommandMap;
 import org.cubeville.cvtools.commands.CommandMapManager;
 
-import net.minecraft.server.v1_11_R1.PacketPlayOutMount;
+import net.minecraft.server.v1_12_R1.PacketPlayOutMount;
 
 public class EntityRide extends Command {
 
@@ -23,16 +26,21 @@ public class EntityRide extends Command {
         addFlag("reverse");
         addFlag("stack");
         addFlag("unstack");
+        addFlag("armorstand");
     }
 
     @Override
     public CommandResponse execute(Player player, Set<String> flags, Map<String, Object> parameters, List<Object> baseParameters) 
         throws CommandExecutionException {
+
+        if(checkMoreThanOne(flags.contains("reverse"), flags.contains("stack"), flags.contains("unstack"), flags.contains("armorstand")))
+            throw new CommandExecutionException("Incompatible parameters.");
+        
         if (flags.contains("reverse") && !flags.contains("stack") && flags.contains("unstack")) {
             dismountAll(player);
             return null;
         }
-		
+
         CommandMap commandMap = CommandMapManager.primaryMap;
         if (!commandMap.contains(player)) {
             throw new CommandExecutionException("&cPlease select an &6entity&c!");
@@ -41,14 +49,18 @@ public class EntityRide extends Command {
         }
 		
         Entity entity = (Entity) commandMap.get(player);
-			
-        if (flags.contains("reverse") && !flags.contains("stack") && !flags.contains("unstack")) {
+
+        if (flags.contains("reverse")) {
             if (getHighestEntity(player) != entity) {
                 stackHighestEntity(player, entity);
             }
-        } else if (!flags.contains("reverse") && flags.contains("stack") && !flags.contains("unstack")) {
-        } else if (!flags.contains("reverse") && !flags.contains("stack") && flags.contains("unstack")) {
+        } else if (flags.contains("stack")) {
+        } else if (flags.contains("unstack")) {
             dismountAll(entity);
+        } else if (flags.contains("armorstand")) {
+            ArmorStand armorStand = (ArmorStand) EntityUtils.getNearestEntity(player.getLocation(), EntityUtils.getEntitiesByType(player.getWorld().getNearbyEntities(player.getLocation(), 10, 10, 10), EntityType.ARMOR_STAND));
+            if(armorStand == null) throw new CommandExecutionException("No armor stand within 10 blocks radius found.");
+            armorStand.setPassenger(entity);
         } else {
         	if (!containsEntity(entity, player)) getHighestEntity(entity).setPassenger(player);
         }

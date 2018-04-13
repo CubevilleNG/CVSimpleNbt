@@ -349,7 +349,7 @@ public class Attributes {
 		HEAD("head"),
 		CHEST("chest"),
 		LEGS("legs"),
-		FEET("feat");
+		FEET("feet");
 		
 		private String slot;
 		

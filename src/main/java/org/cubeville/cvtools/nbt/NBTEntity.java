@@ -1,11 +1,11 @@
 package org.cubeville.cvtools.nbt;
 
-import org.bukkit.craftbukkit.v1_12_R1.entity.CraftEntity;
-import net.minecraft.server.v1_12_R1.NBTTagCompound;
+import org.bukkit.craftbukkit.v1_15_R1.entity.CraftEntity;
+import net.minecraft.server.v1_15_R1.NBTTagCompound;
 
 public class NBTEntity {
 
-	net.minecraft.server.v1_12_R1.Entity nmsEntity;
+	net.minecraft.server.v1_15_R1.Entity nmsEntity;
 	org.bukkit.entity.Entity entity;
     //NBTTagCompound tag;
 	
@@ -18,7 +18,7 @@ public class NBTEntity {
 	
 	public String getName() {
 		if (nmsEntity.hasCustomName()) {
-			return nmsEntity.getCustomName();
+			return nmsEntity.getCustomName().getString();
 		} else {
 			return nmsEntity.getName();
 		}
@@ -28,7 +28,7 @@ public class NBTEntity {
 		return entity;
 	}
 	
-	public net.minecraft.server.v1_12_R1.Entity getRawNMSEntity() {
+	public net.minecraft.server.v1_15_R1.Entity getRawNMSEntity() {
 		return nmsEntity;
 	}
 }

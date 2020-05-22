@@ -1,5 +1,7 @@
 package org.cubeville.simplenbt.commands.skull;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -28,7 +30,7 @@ public class SkullType extends Command {
 		ItemStack item = player.getInventory().getItemInMainHand();
 		short data = (short) baseParameters.get(0);
 		
-		if (item.getType() != Material.SKULL_ITEM) throw new CommandExecutionException("&cHeld item must be a &6Skull&c!");
+		if (getSkulls().contains(item.getType())) throw new CommandExecutionException("&cHeld item must be a &6Skull&c!");
 		if (data < 0 || data > 5) throw new CommandExecutionException("&cThe value &6" + baseParameters.get(0) + "&c is invalid. Please use a value from 0-5.");
 		
 		item.setDurability(data);
@@ -42,5 +44,12 @@ public class SkullType extends Command {
 
 		return new CommandResponse("&aSkull type changed.");
 	}
-
+	
+    private Set<Material> getSkulls() {
+    	return new HashSet<Material>(Arrays.asList(Material.CREEPER_HEAD,
+    												Material.PLAYER_HEAD,
+    												Material.SKELETON_SKULL,
+    												Material.WITHER_SKELETON_SKULL,
+    												Material.ZOMBIE_HEAD));
+    }
 }

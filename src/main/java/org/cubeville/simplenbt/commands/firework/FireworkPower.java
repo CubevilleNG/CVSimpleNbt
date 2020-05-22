@@ -26,7 +26,7 @@ public class FireworkPower extends Command {
 			throws CommandExecutionException {
 		ItemStack item = player.getInventory().getItemInMainHand();
 		
-		if (item.getType() != Material.FIREWORK) {
+		if (item.getType() != Material.FIREWORK_ROCKET) {
 			throw new CommandExecutionException("&cMust be holding a &6firework&c!");
 		}
 		

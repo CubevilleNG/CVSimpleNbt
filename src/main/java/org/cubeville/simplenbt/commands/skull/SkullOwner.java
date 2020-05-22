@@ -1,5 +1,7 @@
 package org.cubeville.simplenbt.commands.skull;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -27,7 +29,7 @@ public class SkullOwner extends Command {
         ItemStack item = player.getInventory().getItemInMainHand();
         SkullMeta meta;
 
-        if (item.getType() != Material.SKULL_ITEM)
+        if (!getSkulls().contains(item.getType()))
             throw new CommandExecutionException("&cHeld item must be a &6Skull&c!");
 
         meta = (SkullMeta) player.getInventory().getItemInMainHand().getItemMeta();
@@ -38,6 +40,14 @@ public class SkullOwner extends Command {
         player.getInventory().setItemInMainHand(item);
 		
         return new CommandResponse("&aSkull owner changed to &6" + baseParameters.get(0));
+    }
+    
+    private Set<Material> getSkulls() {
+    	return new HashSet<Material>(Arrays.asList(Material.CREEPER_HEAD,
+    												Material.PLAYER_HEAD,
+    												Material.SKELETON_SKULL,
+    												Material.WITHER_SKELETON_SKULL,
+    												Material.ZOMBIE_HEAD));
     }
 }
 

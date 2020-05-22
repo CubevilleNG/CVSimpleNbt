@@ -5,15 +5,15 @@ package org.cubeville.cvtools.nbt;
 import java.util.List;
 
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_12_R1.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_15_R1.inventory.CraftItemStack;
 import org.bukkit.inventory.meta.BookMeta;
 import org.cubeville.commons.utils.ColorUtils;
 
-import net.minecraft.server.v1_12_R1.NBTTagCompound;
+import net.minecraft.server.v1_15_R1.NBTTagCompound;
 
 public class BookItem {
 	
-    private net.minecraft.server.v1_12_R1.ItemStack item = null;
+    private net.minecraft.server.v1_15_R1.ItemStack item = null;
     private BookMeta meta = null;
     private NBTTagCompound tags = null;
 
@@ -71,7 +71,7 @@ public class BookItem {
         meta.setAuthor(null);
         meta.setTitle(null);
         org.bukkit.inventory.ItemStack itemStack = CraftItemStack.asBukkitCopy(item);
-        itemStack.setType(Material.BOOK_AND_QUILL);
+        itemStack.setType(Material.WRITABLE_BOOK);
         item = CraftItemStack.asNMSCopy(itemStack);
     }
 	

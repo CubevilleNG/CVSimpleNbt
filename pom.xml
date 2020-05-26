@@ -29,7 +29,7 @@
       <artifactId>spigot</artifactId>
       <version>1.15.2</version>
       <scope>system</scope>
-      <systemPath>/home/mciolkosz/SpigotMC-BuildTools/spigot-1.15.2.jar</systemPath>
+      <systemPath>/BuildTools/spigot-1.15.2.jar</systemPath>
     </dependency>
     <dependency>
       <groupId>org.cubeville</groupId>

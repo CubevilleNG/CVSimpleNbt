@@ -4,7 +4,7 @@ import org.bukkit.WeatherType;
 import org.bukkit.entity.Entity;
 import org.cubeville.cvtools.CVTools;
 
-import net.minecraft.server.v1_12_R1.EntityPlayer;
+import net.minecraft.server.v1_15_R1.EntityPlayer;
 
 public class NBTPlayer extends NBTEntityLiving {
 

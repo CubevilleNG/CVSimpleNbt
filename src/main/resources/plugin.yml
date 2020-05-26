@@ -1,7 +1,7 @@
 name: CVSimpleNbt
 main: org.cubeville.simplenbt.CVSimpleNbt
 author: KipperOrigin
-version: 0.1
+version: 0.3
 
 depend: [CVTools,ProtocolLib]
 

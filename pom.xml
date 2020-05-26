@@ -4,7 +4,7 @@
   <groupId>org.cubeville</groupId>
   <artifactId>CVSimpleNbt</artifactId>
   <packaging>jar</packaging>
-  <version>0.2</version>
+  <version>0.3</version>
   <name>CVSimpleNbt</name>
   <url>http://maven.apache.org</url>
   <properties>
@@ -14,26 +14,27 @@
     <dependency>
       <groupId>org.spigotmc</groupId>
       <artifactId>spigot-api</artifactId>
-      <version>1.12.2-R0.1-SNAPSHOT</version>
+      <version>1.15.2-R0.1-SNAPSHOT</version>
       <type>jar</type>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>com.comphenix.protocol</groupId>
       <artifactId>ProtocolLib</artifactId>
-      <version>4.3.0</version>
+      <version>4.5.0</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>org.bukkit</groupId>
-      <artifactId>craftbukkit</artifactId>
-      <version>1.12.2-R0.1-SNAPSHOT</version>
-      <scope>compile</scope>
+      <groupId>org.spigot</groupId>
+      <artifactId>spigot</artifactId>
+      <version>1.15.2</version>
+      <scope>system</scope>
+      <systemPath>/BuildTools/spigot-1.15.2.jar</systemPath>
     </dependency>
     <dependency>
       <groupId>org.cubeville</groupId>
       <artifactId>CVTools</artifactId>
-      <version>0.4</version>
+      <version>0.5</version>
       <type>jar</type>
       <scope>compile</scope>
     </dependency>
@@ -58,7 +59,7 @@
     </repository>
     <repository>
       <id>dmulloy2-repo</id>
-      <url>http://repo.dmulloy2.net/content/groups/public/</url>
+      <url>https://repo.dmulloy2.net/nexus/repository/public/</url>
     </repository>
   </repositories>
 </project>

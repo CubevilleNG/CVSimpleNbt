@@ -1,11 +1,15 @@
 package org.cubeville.simplenbt.commands.entity;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
+
 import org.cubeville.commons.commands.Command;
 import org.cubeville.commons.commands.CommandExecutionException;
 import org.cubeville.commons.commands.CommandResponse;
@@ -33,11 +37,25 @@ public class EntityInfo extends Command {
 		
         CommandResponse cr = new CommandResponse("&6--------------------------");
         boolean detail = (flags.contains("detail"));
-
+        Entity entity = (Entity) commandMap.get(player);
+     
         for(String string: EntityUtils.getInfo((Entity) commandMap.get(player), detail)) {
             cr.addMessage(string);
         }
-		
+
+        if(entity instanceof LivingEntity) {
+            Collection<PotionEffect> effects = ((LivingEntity) entity).getActivePotionEffects();
+            if(effects.size() == 0) {
+                cr.addMessage("&cNo active effects.");
+            }
+            else {
+                cr.addMessage("&aActive effects:");
+                for(PotionEffect effect: effects) {
+                    cr.addMessage("&a" + effect.getType().getName() + ", duration: " + effect.getDuration() + ", level: " + effect.getAmplifier());
+                }
+            }
+        }
+        
         cr.addMessage("&6--------------------------");
         return cr;
     }

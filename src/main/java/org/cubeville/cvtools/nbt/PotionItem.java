@@ -113,7 +113,7 @@ public class PotionItem {
 		for (int x = 0; x < potionMeta.getCustomEffects().size(); x ++) {
 			PotionEffect startEffect = potionMeta.getCustomEffects().get(x);
 			System.out.print(Math.round(startEffect.getDuration() * finalMultiplier));
-			PotionEffect endEffect = new PotionEffect(startEffect.getType(), (int) Math.round(startEffect.getDuration() * finalMultiplier), startEffect.getAmplifier(), startEffect.isAmbient(), startEffect.hasParticles(), startEffect.getColor());
+			PotionEffect endEffect = new PotionEffect(startEffect.getType(), (int) Math.round(startEffect.getDuration() * finalMultiplier), startEffect.getAmplifier(), startEffect.isAmbient(), startEffect.hasParticles(), startEffect.hasIcon());
 			potionMeta.addCustomEffect(endEffect, true);
 		}
 		multiplier = i;
@@ -127,18 +127,18 @@ public class PotionItem {
     	}
     	
     	public void enableParticles() {
-    		potionEffect = new PotionEffect(potionEffect.getType(), potionEffect.getDuration(), potionEffect.getAmplifier(), true, true, potionEffect.getColor());
+    		potionEffect = new PotionEffect(potionEffect.getType(), potionEffect.getDuration(), potionEffect.getAmplifier(), true, true, potionEffect.hasIcon());
     	}
     	
     	public void disableParticles() {
-    		potionEffect = new PotionEffect(potionEffect.getType(), potionEffect.getDuration(), potionEffect.getAmplifier(), true, false, potionEffect.getColor());
+    		potionEffect = new PotionEffect(potionEffect.getType(), potionEffect.getDuration(), potionEffect.getAmplifier(), true, false, potionEffect.hasIcon());
     	}
     	
     	public void setColor(Color color) {
-    		if (potionEffect.hasParticles())
-    			potionEffect = new PotionEffect(potionEffect.getType(), potionEffect.getDuration(), potionEffect.getAmplifier(), true, true, color);
-    		else
-    			potionEffect = new PotionEffect(potionEffect.getType(), potionEffect.getDuration(), potionEffect.getAmplifier(), true, false, color);
+    		// if (potionEffect.hasParticles())
+    		// 	potionEffect = new PotionEffect(potionEffect.getType(), potionEffect.getDuration(), potionEffect.getAmplifier(), true, true, color);
+    		// else
+    		// 	potionEffect = new PotionEffect(potionEffect.getType(), potionEffect.getDuration(), potionEffect.getAmplifier(), true, false, color);
     	}
     	
     	public PotionEffect getPotionEffect() {

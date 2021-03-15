@@ -2,6 +2,7 @@ name: CVSimpleNbt
 main: org.cubeville.simplenbt.CVSimpleNbt
 author: KipperOrigin
 version: 0.1
+api-version: 1.16
 
 depend: [CVTools,ProtocolLib]
 

@@ -21,6 +21,7 @@ import org.cubeville.simplenbt.commands.item.attributes.*;
 import org.cubeville.simplenbt.commands.item.enchantments.*;
 import org.cubeville.simplenbt.commands.item.flags.*;
 import org.cubeville.simplenbt.commands.item.lore.*;
+import org.cubeville.simplenbt.commands.itemframe.*;
 import org.cubeville.simplenbt.commands.mob.*;
 import org.cubeville.simplenbt.commands.mob.armorstand.*;
 import org.cubeville.simplenbt.commands.mob.horse.*;
@@ -62,6 +63,7 @@ public class CVSimpleNbt extends JavaPlugin {
 		
         // ENTITY
         commandParser.addCommand(new EntityGlow());
+        commandParser.addCommand(new EntityHide());
         commandParser.addCommand(new EntityInfo());
         commandParser.addCommand(new EntityInvulnerable());
         commandParser.addCommand(new EntityMove());
@@ -72,6 +74,8 @@ public class CVSimpleNbt extends JavaPlugin {
         commandParser.addCommand(new EntityRide());
         commandParser.addCommand(new EntityRotate());
         commandParser.addCommand(new EntitySilent());
+        commandParser.addCommand(new EntityUUID());
+        commandParser.addCommand(new EntityVelocity());
 		
         // FIREWORK
         commandParser.addCommand(new FireworkEffectAdd());
@@ -106,6 +110,10 @@ public class CVSimpleNbt extends JavaPlugin {
         commandParser.addCommand(new ItemLoreClear());
         commandParser.addCommand(new ItemLoreRemove());
 
+        // ITEMFRAME
+        commandParser.addCommand(new ItemframeFix());
+        commandParser.addCommand(new ItemframeHide());
+        
         // MOB
         commandParser.addCommand(new MobAge());
         commandParser.addCommand(new MobAI());

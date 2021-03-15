@@ -46,7 +46,7 @@ public class ItemDurability extends Command {
 
         if (parameters.containsKey("unbreakable")) {
             ItemMeta meta = item.getItemMeta();
-            meta.spigot().setUnbreakable((boolean) parameters.get("unbreakable"));
+            meta.setUnbreakable((boolean) parameters.get("unbreakable"));
             item.setItemMeta(meta);
         }
 

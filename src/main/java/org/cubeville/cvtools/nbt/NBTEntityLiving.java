@@ -3,13 +3,13 @@ package org.cubeville.cvtools.nbt;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 
-import net.minecraft.server.v1_12_R1.AttributeInstance;
-import net.minecraft.server.v1_12_R1.AttributeMapBase;
-import net.minecraft.server.v1_12_R1.EntityLiving;
-import net.minecraft.server.v1_12_R1.NBTTagString;
+import net.minecraft.server.v1_16_R3.AttributeMapBase;
+import net.minecraft.server.v1_16_R3.EntityLiving;
+import net.minecraft.server.v1_16_R3.NBTTagString;
 
 public class NBTEntityLiving extends NBTEntity {
 
@@ -34,20 +34,22 @@ public class NBTEntityLiving extends NBTEntity {
 	
 	public Map<String, Double> getAttributes() {
 		Map<String, Double> attributeList = new HashMap<>();
-		AttributeMapBase base = livingEntity.getAttributeMap();
-		for (AttributeInstance instance: base.a()) {
-			getAttributeInstance(base, "poo");
-			attributeList.put(instance.getAttribute().getName(), instance.getValue());
-		}
+                // TODO:
+		// AttributeMapBase base = livingEntity.getAttributeMap(); 
+		// for (AttributeInstance instance: base.a()) {
+		// 	getAttributeInstance(base, "poo");
+		// 	attributeList.put(instance.getAttribute().getName(), instance.getValue());
+		// }
 		return attributeList;
 	}
 	
 	public void addAttribute(AttributeType type, double value) {
 		AttributeMapBase base = livingEntity.getAttributeMap();
 		AttributeInstance instance = getAttributeInstance(base, type.toString());
-		instance.setValue(value);
-		System.out.println(instance.getAttribute().getName() + ":" + instance.getValue());
-		base.a(instance);
+                // TODO:
+		//instance.setValue(value);
+		//System.out.println(instance.getAttribute().getName() + ":" + instance.getValue());
+		//base.a(instance);
 	}
 	
 	public void setAbsorption(float f) {
@@ -55,28 +57,29 @@ public class NBTEntityLiving extends NBTEntity {
 	}
 	
 	public AttributeInstance getAttributeInstance(AttributeMapBase base, String name) {
-		for(AttributeInstance instance: base.a()) {
-			System.out.println(name);
-			System.out.println(instance.getAttribute().getName());
-			System.out.println("_________________");
-			if (instance.getAttribute().getName().equals(name)) {
-				return instance;
-			}
-		}
+            // TODO
+            // for(AttributeInstance instance: base.a()) {
+		// 	System.out.println(name);
+		// 	System.out.println(instance.getAttribute().getName());
+		// 	System.out.println("_________________");
+		// 	if (instance.getAttribute().getName().equals(name)) {
+		// 		return instance;
+		// 	}
+		// }
 		return null;
 	}
 	
 	public static enum AttributeType {
-		GENERIC_ARMOR(new NBTTagString("generic.armor")),
-		GENERIC_ARMOR_TOUGHNESS(new NBTTagString("generic.armorToughness")),
-		GENERIC_ATTACK_DAMAGE(new NBTTagString("generic.attackDamage")),
-		GENERIC_ATTACKS_SPEED(new NBTTagString("generic.attackSpeed")),
-		GENERIC_FOLLOW_RANGE(new NBTTagString("generic.followRange")),
-		GENERIC_KNOCKBACK_RESISTANCE(new NBTTagString("generic.knockbackResistance")),
-		GENERIC_LUCK(new NBTTagString("generic.luck")),
-		GENERIC_MAX_HEALTH(new NBTTagString("generic.maxHealth")),
-		GENERIC_MOVEMENT_SPEED(new NBTTagString("generic.movementSpeed")),
-		HORSE_JUMP_STRENGTH(new NBTTagString("horse.jumpStrength"));
+		GENERIC_ARMOR(NBTTagString.a("generic.armor")),
+		GENERIC_ARMOR_TOUGHNESS(NBTTagString.a("generic.armorToughness")),
+		GENERIC_ATTACK_DAMAGE(NBTTagString.a("generic.attackDamage")),
+		GENERIC_ATTACKS_SPEED(NBTTagString.a("generic.attackSpeed")),
+		GENERIC_FOLLOW_RANGE(NBTTagString.a("generic.followRange")),
+		GENERIC_KNOCKBACK_RESISTANCE(NBTTagString.a("generic.knockbackResistance")),
+		GENERIC_LUCK(NBTTagString.a("generic.luck")),
+		GENERIC_MAX_HEALTH(NBTTagString.a("generic.maxHealth")),
+		GENERIC_MOVEMENT_SPEED(NBTTagString.a("generic.movementSpeed")),
+		HORSE_JUMP_STRENGTH(NBTTagString.a("horse.jumpStrength"));
 		
 		private final NBTTagString type;
 		

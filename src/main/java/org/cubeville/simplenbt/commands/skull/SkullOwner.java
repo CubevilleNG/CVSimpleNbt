@@ -27,7 +27,11 @@ public class SkullOwner extends Command {
         ItemStack item = player.getInventory().getItemInMainHand();
         SkullMeta meta;
 
-        if (item.getType() != Material.SKULL_ITEM)
+        if (item.getType() != Material.CREEPER_HEAD &&
+            item.getType() != Material.PLAYER_HEAD &&
+            item.getType() != Material.SKELETON_SKULL &&
+            item.getType() != Material.WITHER_SKELETON_SKULL &&
+            item.getType() != Material.ZOMBIE_HEAD)
             throw new CommandExecutionException("&cHeld item must be a &6Skull&c!");
 
         meta = (SkullMeta) player.getInventory().getItemInMainHand().getItemMeta();

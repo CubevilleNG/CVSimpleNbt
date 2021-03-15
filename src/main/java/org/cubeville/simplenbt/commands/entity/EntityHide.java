@@ -8,32 +8,31 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.cubeville.commons.commands.Command;
 import org.cubeville.commons.commands.CommandExecutionException;
-import org.cubeville.commons.commands.CommandParameterBoolean;
 import org.cubeville.commons.commands.CommandResponse;
 import org.cubeville.cvtools.commands.CommandMap;
 import org.cubeville.cvtools.commands.CommandMapManager;
 
-public class EntityInvulnerable extends Command {
-    
-    public EntityInvulnerable() {
-        super("entity invulnerable");
-        setPermission("snbt.entity");
-        addBaseParameter(new CommandParameterBoolean());
+public class EntityHide extends Command {
+
+    public EntityHide() {
+        super("entity hide");
+        setPermission("snbt.entity.hide");
     }
-    
+
     @Override
-    public CommandResponse execute(Player player, Set<String> flags, Map<String, Object> parameters, List<Object> baseParameters) 
+    public CommandResponse execute(Player player, Set<String> flags, Map<String, Object> parameters, List<Object> baseParameters)
         throws CommandExecutionException {
+
         CommandMap commandMap = CommandMapManager.primaryMap;
         if (!commandMap.contains(player)) {
             throw new CommandExecutionException("&cPlease select an &6entity&c!");
-        } else if (!(commandMap.get(player) instanceof Entity)) {
+        }
+        System.out.println("Instance class of command map: " + commandMap.get(player).getClass().getName());
+        if (!(commandMap.get(player) instanceof Entity)) {
             throw new CommandExecutionException("&cPlease select an &6entity&c!");
         }
-	
-        Entity entity = (Entity) commandMap.get(player);
-        entity.setInvulnerable((boolean) baseParameters.get(0));
-	
-        return new CommandResponse("&aInvulnerability for entity set to &6" + Boolean.toString((boolean) baseParameters.get(0)));
+
+        return null;
     }
+    
 }

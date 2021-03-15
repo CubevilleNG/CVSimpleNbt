@@ -24,8 +24,10 @@ public class EventPlayerInteract implements Listener {
         Player player = event.getPlayer();
 		
         if (CommandMapManager.primaryMap.contains(player)) {
-            if (CommandMapManager.primaryMap.get(player) != null) return;
-			
+            if (CommandMapManager.primaryMap.get(player) != null) {
+                return;
+            }
+
             event.setCancelled(true);
 			
             if (event.getClickedBlock() == null) {
@@ -41,7 +43,7 @@ public class EventPlayerInteract implements Listener {
             if (event.getHand() != EquipmentSlot.HAND) {
                 return;
             }
-			
+
             CommandMapManager.primaryMap.put(player, event.getClickedBlock());
             player.sendMessage(ColorUtils.addColor("&aBlock &6" + event.getClickedBlock().getType().name() + "&a selected!"));
         }

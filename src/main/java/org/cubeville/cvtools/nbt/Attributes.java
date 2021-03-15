@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentMap;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import org.bukkit.craftbukkit.v1_12_R1.entity.CraftEntity;
+import org.bukkit.craftbukkit.v1_16_R3.entity.CraftEntity;
 import org.bukkit.inventory.ItemStack;
 import com.comphenix.protocol.utility.MinecraftReflection;
 import com.comphenix.protocol.wrappers.nbt.NbtBase;
@@ -22,7 +22,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Maps;
 
-import net.minecraft.server.v1_12_R1.NBTTagCompound;
+import net.minecraft.server.v1_16_R3.NBTTagCompound;
 
 public class Attributes {
     public enum Operation {
@@ -264,9 +264,10 @@ public class Attributes {
     }
     
     public Attributes(org.bukkit.entity.Entity e) {
-    	net.minecraft.server.v1_12_R1.Entity entity = (net.minecraft.server.v1_12_R1.Entity) ((CraftEntity) e).getHandle();
-    	NBTTagCompound nbt = new NBTTagCompound();
-    	entity.f(nbt);
+        // TODO
+    	// net.minecraft.server.v1_16_R3.Entity entity = (net.minecraft.server.v1_16_R3.Entity) ((CraftEntity) e).getHandle();
+    	// NBTTagCompound nbt = new NBTTagCompound();
+    	// entity.f(nbt);
     }
     
     /**

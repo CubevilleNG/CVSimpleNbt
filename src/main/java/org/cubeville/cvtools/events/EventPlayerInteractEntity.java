@@ -24,14 +24,11 @@ public class EventPlayerInteractEntity implements Listener {
         Entity entity = event.getRightClicked();
         Player player = event.getPlayer();
         CommandMap commandMap = CommandMapManager.primaryMap;
-        
-        if (commandMap.contains(player)) {
-            event.setCancelled(true);
-            
+
+        if (commandMap.contains(player)) {            
             if (commandMap.get(player) != null) return;
-            
+            event.setCancelled(true);
             commandMap.put(player, entity);
-            
             if (entity.getCustomName() != null) {
                 event.getPlayer().sendMessage(ColorUtils.addColor("&aMob &6" + entity.getCustomName() + "&a selected!"));
             } else {

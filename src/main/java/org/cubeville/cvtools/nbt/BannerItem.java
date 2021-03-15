@@ -1,5 +1,7 @@
 package org.cubeville.cvtools.nbt;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 import org.bukkit.DyeColor;
@@ -13,9 +15,42 @@ public class BannerItem {
 
     private ItemStack itemStack = null;
     private BannerMeta bannerMeta = null;
-	
+
+    private HashSet<Material> bannerMaterials = new HashSet<>(Arrays.asList(Material.BLACK_BANNER,
+                                                           Material.BLACK_WALL_BANNER,
+                                                           Material.BLUE_BANNER,
+                                                           Material.BLUE_WALL_BANNER,
+                                                           Material.BROWN_BANNER,
+                                                           Material.BROWN_WALL_BANNER,
+                                                           Material.CYAN_BANNER,
+                                                           Material.CYAN_WALL_BANNER,
+                                                           Material.GRAY_BANNER,
+                                                           Material.GRAY_WALL_BANNER,
+                                                           Material.GREEN_BANNER,
+                                                           Material.GREEN_WALL_BANNER,
+                                                           Material.LIGHT_BLUE_BANNER,
+                                                           Material.LIGHT_BLUE_WALL_BANNER,
+                                                           Material.LIGHT_GRAY_BANNER,
+                                                           Material.LIGHT_GRAY_WALL_BANNER,
+                                                           Material.LIME_BANNER,
+                                                           Material.LIME_WALL_BANNER,
+                                                           Material.MAGENTA_BANNER,
+                                                           Material.MAGENTA_WALL_BANNER,
+                                                           Material.ORANGE_BANNER,
+                                                           Material.ORANGE_WALL_BANNER,
+                                                           Material.PINK_BANNER,
+                                                           Material.PINK_WALL_BANNER,
+                                                           Material.PURPLE_BANNER,
+                                                           Material.PURPLE_WALL_BANNER,
+                                                           Material.RED_BANNER,
+                                                           Material.RED_WALL_BANNER,
+                                                           Material.WHITE_BANNER,
+                                                           Material.WHITE_WALL_BANNER,
+                                                           Material.YELLOW_BANNER,
+                                                           Material.YELLOW_WALL_BANNER));
+
     public BannerItem(ItemStack item) {
-        if (item.getType() == Material.BANNER || item.getType() == Material.SHIELD) {
+        if (bannerMaterials.contains(item.getType()) || item.getType() == Material.SHIELD) {
             itemStack = item;
             bannerMeta = (BannerMeta) item.getItemMeta();
         }
@@ -83,7 +118,7 @@ public class BannerItem {
     }
 	
     public void setBanner() {
-        itemStack.setType(Material.STANDING_BANNER);
+        itemStack.setType(Material.LEGACY_STANDING_BANNER);
     }
 	
     public ItemStack asItemStack() {

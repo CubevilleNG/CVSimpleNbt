@@ -28,7 +28,13 @@ public class SkullType extends Command {
 		ItemStack item = player.getInventory().getItemInMainHand();
 		short data = (short) baseParameters.get(0);
 		
-		if (item.getType() != Material.SKULL_ITEM) throw new CommandExecutionException("&cHeld item must be a &6Skull&c!");
+		if (item.getType() != Material.CREEPER_HEAD &&
+                    item.getType() != Material.PLAYER_HEAD &&
+                    item.getType() != Material.SKELETON_SKULL &&
+                    item.getType() != Material.WITHER_SKELETON_SKULL &&
+                    item.getType() != Material.ZOMBIE_HEAD)
+                    throw new CommandExecutionException("&cHeld item must be a &6Skull&c!");
+                
 		if (data < 0 || data > 5) throw new CommandExecutionException("&cThe value &6" + baseParameters.get(0) + "&c is invalid. Please use a value from 0-5.");
 		
 		item.setDurability(data);
